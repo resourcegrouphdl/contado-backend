@@ -16,7 +16,7 @@ FROM eclipse-temurin:17-jdk
 WORKDIR /app
 
 # Copiar el .jar construido desde la etapa anterior
-COPY --from=build /app/target/api-productos-0.0.1-SNAPSHOT.jar app.jar
+COPY --from=build /app/target/contado-backend-0.0.1-SNAPSHOT.jar app.jar
 
 EXPOSE 8080
 
