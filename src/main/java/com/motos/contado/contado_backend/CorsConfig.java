@@ -17,7 +17,7 @@ public class CorsConfig {
 
         config.setAllowedOrigins(List.of(
                 "http://localhost:4200",   // tu front dev
-                "https://tu-front.web.app" // tu front en prod
+                "https://mv-motors.com" // tu front en prod
         ));
 
         config.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"));
