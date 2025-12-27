@@ -9,7 +9,7 @@ RUN mvn dependency:go-offline -B
 # Código fuente
 COPY src ./src
 COPY frontend ./frontend
-COPY src/main/frontend ./src/main/frontend
+
 
 # Build Vaadin en producción
 RUN mvn clean package -Pproduction -DskipTests
