@@ -1,13 +1,13 @@
 package com.motos.contado.contado_backend.controllers;
 
 
-import com.motos.contado.contado_backend.dto.ResponsePrueba;
+
 import com.motos.contado.contado_backend.persistence.entity.Product;
 import com.motos.contado.contado_backend.service.ProductService;
-import lombok.AllArgsConstructor;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
+
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
