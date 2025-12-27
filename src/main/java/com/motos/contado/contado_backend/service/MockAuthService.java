@@ -6,8 +6,11 @@ import org.springframework.stereotype.Service;
 @Service
 public class MockAuthService {
 
-    // Credenciales de ejemplo: usuario="user", contraseña="pass"
+    /**
+     * Maqueta de autenticación: no hay credenciales en código.
+     * Devuelve true si usuario y contraseña no están vacíos.
+     */
     public boolean authenticate(String username, String password) {
-        return "user".equals(username) && "pass".equals(password);
+        return username != null && password != null && !username.isBlank() && !password.isBlank();
     }
 }
