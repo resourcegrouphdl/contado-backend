@@ -13,6 +13,7 @@ RUN apt-get update && apt-get install -y curl gnupg2 ca-certificates \
 
 # Copiar el código fuente
 COPY src ./src
+COPY frontend ./frontend
 COPY frontend ./src/main/frontend
 
 # Construir el .jar
