@@ -15,20 +15,14 @@ public class CorsConfig {
     public CorsFilter corsFilter() {
         CorsConfiguration config = new CorsConfiguration();
 
-        config.setAllowedOrigins(List.of(
-                "http://localhost:4200",
-                "https://*.run.app",   // tu front dev
-                "https://mv-motors.com"// tu front en prod
-        ));
-
+        //config.setAllowedOrigins(List.of("http://localhost:4200","https://mv-motors.com"));
+        config.setAllowedOriginPatterns(List.of("*"));
         config.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"));
         config.setAllowedHeaders(List.of("*"));
-        config.setAllowCredentials(true);
+        config.setAllowCredentials(false);
         config.setMaxAge(3600L);
 
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-
-
         source.registerCorsConfiguration("/**", config);
 
         return new CorsFilter(source);
