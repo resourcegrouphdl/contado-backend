@@ -13,7 +13,7 @@ RUN apt-get update && apt-get install -y curl gnupg2 ca-certificates \
 
 # Copiar el código fuente
 COPY src ./src
-COPY frontend ./frontend
+COPY frontend ./src/main/frontend
 
 # Construir el .jar
 RUN mvn clean package -DskipTests -Pproduction
@@ -26,6 +26,5 @@ ENV PORT 8080
 EXPOSE 8080
 # Ejecutar la aplicación
 #ENTRYPOINT ["java", "-jar", "app.jar"]
-ENTRYPOINT ["sh", "-c", "exec java -jar app.jar --server.port=${PORT}"]
-
-
+#ENTRYPOINT ["sh", "-c", "exec java -jar app.jar"]
+ENTRYPOINT ["sh", "-c", "exec java -Dvaadin.productionMode=true -jar app.jar --server.port=${PORT}"]
