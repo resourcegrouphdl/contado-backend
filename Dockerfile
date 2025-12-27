@@ -7,6 +7,7 @@ RUN mvn dependency:go-offline -B
 
 # Copiar el código fuente
 COPY src ./src
+COPY frontend ./frontend
 
 # Construir el .jar
 RUN mvn clean package -DskipTests
