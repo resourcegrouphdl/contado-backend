@@ -9,34 +9,23 @@ import com.vaadin.flow.component.orderedlayout.FlexComponent;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.textfield.PasswordField;
 import com.vaadin.flow.component.textfield.TextField;
+import com.vaadin.flow.component.login.LoginOverlay;
+import com.vaadin.flow.component.login.LoginForm;
+import com.vaadin.flow.component.html.Div;
 import com.vaadin.flow.router.Route;
 
+
 @Route("login")
-public class LoginView extends VerticalLayout{
+public class LoginView extends Div{
     public LoginView(MockAuthService authService) {
-        setSizeFull();
-        setDefaultHorizontalComponentAlignment(FlexComponent.Alignment.CENTER);
-
-        H1 title = new H1("Iniciar sesiónn");
-        TextField username = new TextField("Usuario");
-        username.setPlaceholder("usuario");
-        PasswordField password = new PasswordField("Contraseña");
-        password.setPlaceholder("contraseña");
-
-        Button loginBtn = new Button("Entrar", event -> {
-            boolean ok = authService.authenticate(username.getValue(), password.getValue());
-            if (ok) {
-                Notification.show("Bienvenido " + username.getValue(), 2000, Notification.Position.TOP_CENTER);
-                // UI.getCurrent().navigate("ruta-privada"); // descomentar para navegar
-            } else {
-                Notification.show("Credenciales incorrectas", 2000, Notification.Position.TOP_CENTER);
-            }
-        });
-
-        add(title, username, password, loginBtn);
-        setAlignItems(FlexComponent.Alignment.CENTER);
-        setPadding(true);
-        setSpacing(true);
+        LoginOverlay loginOverlay = new LoginOverlay();
+        loginOverlay.setTitle("Admin");
+        loginOverlay.setDescription("motos al contado");
+        add(loginOverlay);
+        loginOverlay.setOpened(true);
+        // Prevent the example from stealing focus when browsing the
+        // documentation
+        loginOverlay.getElement().setAttribute("no-autofocus", "");
     }
 
 }
