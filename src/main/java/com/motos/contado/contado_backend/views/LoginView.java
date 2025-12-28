@@ -19,8 +19,8 @@ import com.vaadin.flow.router.Route;
 public class LoginView extends Div{
     public LoginView(MockAuthService authService) {
         LoginOverlay loginOverlay = new LoginOverlay();
-        loginOverlay.setTitle("TaskMob");
-        loginOverlay.setDescription("Built with ♥ by Vaadin");
+        loginOverlay.setTitle("Admin");
+        loginOverlay.setDescription("motos al contado");
         add(loginOverlay);
         loginOverlay.setOpened(true);
         // Prevent the example from stealing focus when browsing the
