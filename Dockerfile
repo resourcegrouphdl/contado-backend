@@ -1,10 +1,11 @@
+# 🏁 Etapa 1: Construcción (Build)
 FROM maven:3.9.6-eclipse-temurin-17 AS build
 WORKDIR /app
 # Copiar el pom.xml
 COPY pom.xml .
 # Copiar el código fuente
 COPY src ./src
-COPY frontend ./src/main/frontend
+COPY frontend ./frontend
 RUN mvn -B clean package -Pproduction -DskipTests
 # 🏁 Etapa 2: Imagen final ligera
 FROM eclipse-temurin:17-jre-jammy
