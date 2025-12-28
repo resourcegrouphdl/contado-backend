@@ -12,4 +12,7 @@ WORKDIR /app
 # Copiar el .jar construido desde la etapa anterior
 COPY --from=build /app/target/contado-backend-0.0.1-SNAPSHOT.jar app.jar
 EXPOSE 8080
-ENTRYPOINT ["java", "-jar", "app.jar"]
+ENV PORT=8080
+
+# forzar modo producción de Vaadin al ejecutar el JAR
+ENTRYPOINT ["sh", "-c", "exec java -Dvaadin.productionMode=true -jar app.jar --server.port=${PORT}"]
