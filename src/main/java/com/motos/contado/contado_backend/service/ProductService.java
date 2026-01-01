@@ -1,5 +1,6 @@
 package com.motos.contado.contado_backend.service;
 
+import java.util.List;
 import java.util.Optional;
 
 import com.motos.contado.contado_backend.persistence.entity.Product;
@@ -13,4 +14,8 @@ public interface ProductService {
 
     Optional<Product> findOneById(Long productId);
 
+    // Método de conveniencia para obtener todos los productos como lista
+    default List<Product> findAll() {
+        return findAll(Pageable.unpaged()).getContent();
+    }
 }

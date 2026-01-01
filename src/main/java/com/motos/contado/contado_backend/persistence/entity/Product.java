@@ -1,11 +1,13 @@
 package com.motos.contado.contado_backend.persistence.entity;
 
 import jakarta.persistence.*;
+import lombok.Data;
 
 import java.math.BigDecimal;
 
 @Entity
 @Table(name="tablaprueba")
+@Data
 public class Product {
 
     @Id
@@ -17,21 +19,7 @@ public class Product {
     private String name;
 
 
-    public Long getId() {
-        return id;
-    }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
 
 
 }
