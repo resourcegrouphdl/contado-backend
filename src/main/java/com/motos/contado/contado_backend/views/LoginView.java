@@ -17,7 +17,7 @@ import com.vaadin.flow.router.Route;
 import com.vaadin.flow.server.VaadinSession;
 
 
-@Route("login")
+@Route("")
 public class LoginView extends Div{
     public LoginView(MockAuthService authService) {
         LoginOverlay loginOverlay = new LoginOverlay();

@@ -3,73 +3,66 @@ package com.motos.contado.contado_backend.views;
 import com.motos.contado.contado_backend.persistence.entity.Product;
 import com.motos.contado.contado_backend.service.ProductService;
 import com.vaadin.flow.component.Component;
+import com.vaadin.flow.component.applayout.AppLayout;
+import com.vaadin.flow.component.applayout.DrawerToggle;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.grid.Grid;
 import com.vaadin.flow.component.html.H1;
+
+import com.vaadin.flow.component.menubar.MenuBar;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
+import com.vaadin.flow.component.orderedlayout.Scroller;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
+import com.vaadin.flow.component.sidenav.SideNav;
+import com.vaadin.flow.component.sidenav.SideNavItem;
+import com.vaadin.flow.component.splitlayout.SplitLayout;
 import com.vaadin.flow.router.Route;
 import com.vaadin.flow.component.UI;
 import com.vaadin.flow.server.VaadinSession;
 import org.springframework.data.domain.PageRequest;
+import com.vaadin.flow.component.sidenav.SideNavItem;
+import com.vaadin.flow.component.sidenav.SideNav;
 
 import java.util.List;
 
 @Route("homeDashboard")
+public class MainView extends AppLayout {
 
-public class MainView extends VerticalLayout {
+    //private final ProductService productService;
 
-    private final ProductService productService;
+    public MainView() {
+        DrawerToggle toggle = new DrawerToggle();
 
-    public MainView(ProductService productService) {
-        this.productService = productService;
-        setSizeFull();
-        setPadding(true);
-        setSpacing(true);
+        H1 title = new H1("MyApp");
+        title.getStyle().set("font-size", "1.125rem").set("margin", "0");
 
-        add(createHeader());
-        add(createSummaryLayout());
-        add(createGrid());
-        expand(createGrid()); // hace que la grid ocupe el espacio restante
-    }
-    private Component createHeader() {
-        H1 title = new H1("Dashboard");
-        Button logout = new Button("Cerrar sesión", e -> {
-            // invalidar sesión y volver al login
-            try {
-                VaadinSession.getCurrent().close();
-            } catch (Exception ex) {
-                // manejar si hace falta
-            }
-            UI.getCurrent().navigate("login");
-        });
+        SideNav nav = getSideNav();
+        nav.getStyle().set("margin", "var(--vaadin-gap-s)");
 
-        HorizontalLayout header = new HorizontalLayout(title, logout);
-        header.expand(title);
-        header.setWidthFull();
-        return header;
+        Scroller scroller = new Scroller(nav);
+
+        addToDrawer(scroller);
+        addToNavbar(toggle, title);
     }
 
-    private Component createSummaryLayout() {
 
-        List<Product> products = productService.findAll(); // adapta si tu método tiene otro nombre
-        int totalProducts = products.size();
+    private SideNav getSideNav() {
+        SideNav sideNav = new SideNav();
 
-        SummaryCard totalCard = new SummaryCard("Productos", String.valueOf(totalProducts));
-        HorizontalLayout layout = new HorizontalLayout(totalCard);
-        layout.setWidthFull();
-        return layout;
-    }
 
-    private Component createGrid() {
-        Grid<Product> grid = new Grid<>(Product.class, false);
-        List<Product> products = productService.findAll();
+        SideNavItem homeIte0 = new SideNavItem("INVENTARIO");
+        SideNavItem homeIte1 = new SideNavItem("POR UNIDAD");
+        SideNavItem homeIte2 = new SideNavItem("CREAR PRODUCTO");
+        SideNavItem homeIte3 = new SideNavItem("ACTUALIZAR PRODUCTO");
+        SideNavItem homeIte4 = new SideNavItem("CERRAR SESION");
 
-        // columna genérica que usa toString() para evitar depender de campos concretos
-        grid.addColumn(p -> p == null ? "" : p.toString()).setHeader("Producto");
-        grid.setItems(products);
-        grid.setSizeFull();
-        return grid;
+
+        sideNav.addItem(homeIte0);
+        sideNav.addItem(homeIte1);
+        sideNav.addItem(homeIte2);
+        sideNav.addItem(homeIte3);
+        sideNav.addItem(homeIte4);
+        return sideNav;
     }
 
 }
