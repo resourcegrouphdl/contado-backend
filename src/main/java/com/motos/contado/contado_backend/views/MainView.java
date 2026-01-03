@@ -26,6 +26,8 @@ public class MainView extends AppLayout {
         Scroller scroller = new Scroller(nav);
         addToDrawer(scroller);
         addToNavbar(toggle, title);
+
+
     }
 
 
@@ -35,12 +37,15 @@ public class MainView extends AppLayout {
         SideNavItem homeIte1 = new SideNavItem("POR UNIDAD",UnitedView.class);
         SideNavItem homeIte2 = new SideNavItem("CREAR PRODUCTO",CreateView.class);
         SideNavItem homeIte3 = new SideNavItem("ACTUALIZAR PRODUCTO",UpdateView.class);
-        SideNavItem homeIte4 = new SideNavItem("CERRAR SESION",LoginView.class);
+        SideNavItem homeIte4 = new SideNavItem("CERRAR SESION");
+        //SideNavItem homeIte4 = new SideNavItem("CERRAR SESION",LoginView.class);
         sideNav.addItem(homeIte0);
         sideNav.addItem(homeIte1);
         sideNav.addItem(homeIte2);
         sideNav.addItem(homeIte3);
         sideNav.addItem(homeIte4);
+
+
         return sideNav;
     }
 

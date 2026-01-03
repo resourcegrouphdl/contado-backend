@@ -33,7 +33,7 @@ public class LoginView extends Div{
                 // cierra solo el overlay
                 loginOverlay.close();
                 // navegar a la vista protegida
-                UI.getCurrent().navigate("homeDashboard");
+                UI.getCurrent().navigate(InventarioView.class);
             } else {
                 loginOverlay.setError(true);
             }
