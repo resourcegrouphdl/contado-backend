@@ -29,7 +29,10 @@ public class ProductSerciceImpl implements ProductService {
         return productRepository.findById(productId);
     }
 
-
+    @Override
+    public Product save(Product product) {
+        return productRepository.save(product);
+    }
 
 
 

@@ -18,4 +18,6 @@ public interface ProductService {
     default List<Product> findAll() {
         return findAll(Pageable.unpaged()).getContent();
     }
+
+    Product save(Product product);
 }
